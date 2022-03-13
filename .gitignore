@@ -1,4 +1,5 @@
 *.swp
 *.swo
 tmp/
+log/
 config/master.key
