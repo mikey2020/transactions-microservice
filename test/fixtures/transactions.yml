@@ -1,0 +1,13 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  customerID: 1
+  input: MyString
+  output: MyString
+  dateOfTransaction: 2022-03-11
+
+two:
+  customerID: 1
+  input: MyString
+  output: MyString
+  dateOfTransaction: 2022-03-11

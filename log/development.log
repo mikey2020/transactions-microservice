@@ -1,0 +1,86 @@
+Started GET "/api/v1/transactions" for 172.18.0.1 at 2022-03-13 00:06:56 +0000
+  [1m[36mActiveRecord::SchemaMigration Pluck (16.5ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  
+ActionController::RoutingError (uninitialized constant Api::V1):
+  
+Started GET "/api/v1/transactions" for 172.18.0.1 at 2022-03-13 00:09:39 +0000
+  
+ActionController::RoutingError (No route matches [GET] "/api/v1/transactions"):
+  
+Started GET "/api/v1/transactions" for 172.18.0.1 at 2022-03-13 00:10:22 +0000
+  [1m[36mActiveRecord::SchemaMigration Pluck (20.4ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  
+ActionController::RoutingError (No route matches [GET] "/api/v1/transactions"):
+  
+Started GET "/api/transactions" for 172.18.0.1 at 2022-03-13 00:10:33 +0000
+  
+ActionController::RoutingError (No route matches [GET] "/api/transactions"):
+  
+Started GET "/api/transactions" for 172.18.0.1 at 2022-03-13 00:10:36 +0000
+  
+ActionController::RoutingError (No route matches [GET] "/api/transactions"):
+  
+Started GET "/transactions" for 172.18.0.1 at 2022-03-13 00:10:47 +0000
+Processing by TransactionsController#index as */*
+  [1m[36mTransaction Load (15.9ms)[0m  [1m[34mSELECT "transactions".* FROM "transactions"[0m
+  ↳ app/controllers/transactions_controller.rb:13:in `index'
+Completed 200 OK in 350ms (Views: 18.1ms | ActiveRecord: 15.9ms | Allocations: 15885)
+
+
+Started POST "/transactions" for 172.18.0.1 at 2022-03-13 04:10:45 +0000
+Processing by TransactionsController#create as */*
+  Parameters: {"mkkk"=>"wgat", "transaction"=>{}}
+Completed 400 Bad Request in 2ms (ActiveRecord: 237.5ms | Allocations: 287)
+
+
+  
+ActionController::ParameterMissing (param is missing or the value is empty: transaction):
+  
+app/controllers/transactions_controller.rb:24:in `transaction_params'
+app/controllers/transactions_controller.rb:3:in `create'
+Started POST "/transactions" for 172.18.0.1 at 2022-03-13 04:11:12 +0000
+Processing by TransactionsController#create as */*
+  Parameters: {"customer_id"=>"1001", "transaction"=>{"customer_id"=>"1001"}}
+  [1m[36mTRANSACTION (3.8ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/transactions_controller.rb:4:in `create'
+  [1m[36mTransaction Exists? (19.7ms)[0m  [1m[34mSELECT 1 AS one FROM "transactions" WHERE "transactions"."date_of_transaction" IS NULL LIMIT $1[0m  [["LIMIT", 1]]
+  ↳ app/controllers/transactions_controller.rb:4:in `create'
+  [1m[36mTRANSACTION (3.6ms)[0m  [1m[31mROLLBACK[0m
+  ↳ app/controllers/transactions_controller.rb:4:in `create'
+Completed 422 Unprocessable Entity in 477ms (ActiveRecord: 70.7ms | Allocations: 10746)
+
+
+  
+ActiveRecord::RecordInvalid (Validation failed: Date of transaction can't be blank, Input can't be blank, Output can't be blank):
+  
+app/controllers/transactions_controller.rb:4:in `create'
+Started POST "/transactions" for 172.18.0.1 at 2022-03-13 04:14:14 +0000
+Processing by TransactionsController#create as */*
+  Parameters: {"customer_id"=>"1001", "input"=>"5000", "output"=>"10,000", "date_of_transaction"=>"12/05/2023", "transaction"=>{"customer_id"=>"1001", "input"=>"5000", "output"=>"10,000", "date_of_transaction"=>"12/05/2023"}}
+  [1m[36mTRANSACTION (2.0ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/transactions_controller.rb:4:in `create'
+  [1m[36mTransaction Exists? (11.7ms)[0m  [1m[34mSELECT 1 AS one FROM "transactions" WHERE "transactions"."date_of_transaction" = $1 LIMIT $2[0m  [["date_of_transaction", "2023-05-12"], ["LIMIT", 1]]
+  ↳ app/controllers/transactions_controller.rb:4:in `create'
+  [1m[36mTransaction Create (132.1ms)[0m  [1m[32mINSERT INTO "transactions" ("customer_id", "input", "output", "date_of_transaction", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["customer_id", 1001], ["input", "5000"], ["output", "10,000"], ["date_of_transaction", "2023-05-12"], ["created_at", "2022-03-13 04:14:14.716551"], ["updated_at", "2022-03-13 04:14:14.716551"]]
+  ↳ app/controllers/transactions_controller.rb:4:in `create'
+  [1m[36mTRANSACTION (13.5ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/transactions_controller.rb:4:in `create'
+Completed 200 OK in 220ms (Views: 1.4ms | ActiveRecord: 159.3ms | Allocations: 3599)
+
+
+Started GET "/transactions" for 172.18.0.1 at 2022-03-13 04:14:22 +0000
+Processing by TransactionsController#index as */*
+  Parameters: {"customer_id"=>"1001", "input"=>"5000", "output"=>"10,000", "date_of_transaction"=>"12/05/2023", "transaction"=>{"customer_id"=>"1001", "input"=>"5000", "output"=>"10,000", "date_of_transaction"=>"12/05/2023"}}
+  [1m[36mTransaction Load (29.9ms)[0m  [1m[34mSELECT "transactions".* FROM "transactions"[0m
+  ↳ app/controllers/transactions_controller.rb:13:in `index'
+Completed 200 OK in 117ms (Views: 85.3ms | ActiveRecord: 29.9ms | Allocations: 991)
+
+
+Started GET "/transactions/1" for 172.18.0.1 at 2022-03-13 04:14:32 +0000
+Processing by TransactionsController#show as */*
+  Parameters: {"customer_id"=>"1001", "input"=>"5000", "output"=>"10,000", "date_of_transaction"=>"12/05/2023", "id"=>"1", "transaction"=>{"customer_id"=>"1001", "input"=>"5000", "output"=>"10,000", "date_of_transaction"=>"12/05/2023"}}
+  [1m[36mTransaction Load (37.6ms)[0m  [1m[34mSELECT "transactions".* FROM "transactions" WHERE "transactions"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/transactions_controller.rb:17:in `show'
+Completed 200 OK in 82ms (Views: 0.7ms | ActiveRecord: 38.0ms | Allocations: 940)
+
+
