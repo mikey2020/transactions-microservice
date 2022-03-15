@@ -1,8 +1,9 @@
 class TransactionsController < ApplicationController
   def create
     @transaction = Transaction.new(transaction_params)
+    @transaction.date_of_transaction = Time.now
     if @transaction.save!
-      render json: @transaction  
+      render json: @transaction, status: 201  
     else
       render json: { message: "Transaction not saved" }
     end
@@ -21,6 +22,6 @@ class TransactionsController < ApplicationController
   private
 
   def transaction_params
-    params.require(:transaction).permit(:customer_id, :input, :output, :date_of_transaction)
+    params.require(:transaction).permit(:customer_id, :input, :output)
   end
 end
