@@ -21,7 +21,15 @@
 * API endpoints
     - `` GET localhost:3000/transactions``
     - `` GET localhost:3000/transactions/:id ``
-    - `` POST localhost:3000/transactions``
+    -   ``` 
+         POST localhost:3000/transactions 
+         Example request payload
+          {
+            "customer_id": "001",
+            "input": "5000",
+            "output": "10,000"
+          }
+        ```
 
 * Deployment instructions
 
