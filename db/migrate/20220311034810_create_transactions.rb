@@ -4,7 +4,7 @@ class CreateTransactions < ActiveRecord::Migration[7.0]
       t.integer :customer_id
       t.string :input
       t.string :output
-      t.date :date_of_transaction
+      t.datetime :date_of_transaction
 
       t.timestamps
     end

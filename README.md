@@ -18,7 +18,10 @@
 * How to run the test suite
     - `` docker-compose run --rm web bin/rspec spec ``
 
-* Services (job queues, cache servers, search engines, etc.)
+* API endpoints
+    - `` GET localhost:3000/transactions``
+    - `` GET localhost:3000/transactions/:id ``
+    - `` POST localhost:3000/transactions``
 
 * Deployment instructions
 
