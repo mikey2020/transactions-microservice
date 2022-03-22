@@ -6,7 +6,7 @@ class TransactionsController < ApplicationController
       @transaction.save
       render json: @transaction, status: 201  
     else
-      render json: { message: "Transaction not saved" }
+      render json: { message: "Transaction not saved" }, status: 422
     end
   end 
 
