@@ -6,6 +6,7 @@ Rails.application.routes.draw do
   get "/transactions", to: "transactions#index"
   get "/transactions/:id", to: "transactions#show"
   post "/transactions", to: "transactions#create"
+  put "/transactions/:id", to: "transactions#update"
   #namespace :api do
     #namespace :v1 do
       #resources :transactions
